@@ -20,4 +20,11 @@ public class WeiboController extends IdEntityService<Weibo> {
     public List<?> index() {
         return dao().query(Weibo.class, null);
     }
+
+    @At
+    @GET
+    @Ok("jsp:jsp.weibo.create")
+    public void create() {
+
+    }
 }
