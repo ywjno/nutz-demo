@@ -1,8 +1,10 @@
 package app.controllers;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.nutz.ioc.loader.annotation.IocBean;
+import org.nutz.lang.Times;
 import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.GET;
 import org.nutz.mvc.annotation.Ok;
@@ -50,6 +52,15 @@ public class WeiboController extends IdEntityService<Weibo> {
     @Ok("jsp:jsp.weibo.edit")
     public Weibo edit(int id) {
         Weibo weibo = fetch(id);
+        return weibo;
+    }
+
+    @At("/?/update")
+    @POST
+    @Ok(">>:/weibo/${obj.id}/show")
+    public Weibo update(@Param("::weibo.") Weibo weibo) {
+        weibo.setUpdatedAt(new Timestamp(Times.now().getTime()));
+        dao().updateIgnoreNull(weibo);
         return weibo;
     }
 }
