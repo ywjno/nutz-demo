@@ -13,5 +13,6 @@
         <label for="content">content</label><br />
         <%= weibo.getContent() %>
       </p>
+      <a href='../../weibo/<%= weibo.getId() %>/edit'>Edit this weibo</a>
   </body>
 </html>
