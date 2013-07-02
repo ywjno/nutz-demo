@@ -14,5 +14,9 @@
         <%= weibo.getContent() %>
       </p>
       <a href='../../weibo/<%= weibo.getId() %>/edit'>Edit this weibo</a>
+      <form action="../../weibo/<%= weibo.getId() %>/destroy" method="post">
+        <input type="hidden" name="weibo.id" id="weibo.id" value='<%= weibo.getId() %>' />
+        <input type="submit" name="submit" value="delete this weibo" />
+      </form>
   </body>
 </html>
