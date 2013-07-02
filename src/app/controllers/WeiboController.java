@@ -63,4 +63,11 @@ public class WeiboController extends IdEntityService<Weibo> {
         dao().updateIgnoreNull(weibo);
         return weibo;
     }
+
+    @At("/?/destroy")
+    @POST
+    @Ok(">>:/weibo/index")
+    public void destroy(@Param("id") int id) {
+        dao().delete(fetch(id));
+    }
 }
