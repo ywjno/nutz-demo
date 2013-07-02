@@ -36,4 +36,12 @@ public class WeiboController extends IdEntityService<Weibo> {
     public void save(@Param("::weibo.") Weibo weibo) {
         dao().insert(weibo);
     }
+
+    @At("/?/show")
+    @GET
+    @Ok("jsp:jsp.weibo.show")
+    public Weibo show(int id) {
+        Weibo weibo = fetch(id);
+        return weibo;
+    }
 }
