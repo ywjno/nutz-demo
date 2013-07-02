@@ -44,4 +44,12 @@ public class WeiboController extends IdEntityService<Weibo> {
         Weibo weibo = fetch(id);
         return weibo;
     }
+
+    @At("/?/edit")
+    @GET
+    @Ok("jsp:jsp.weibo.edit")
+    public Weibo edit(int id) {
+        Weibo weibo = fetch(id);
+        return weibo;
+    }
 }
