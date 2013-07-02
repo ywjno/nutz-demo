@@ -6,6 +6,8 @@ import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.GET;
 import org.nutz.mvc.annotation.Ok;
+import org.nutz.mvc.annotation.POST;
+import org.nutz.mvc.annotation.Param;
 import org.nutz.service.IdEntityService;
 
 import app.models.Weibo;
@@ -26,5 +28,12 @@ public class WeiboController extends IdEntityService<Weibo> {
     @Ok("jsp:jsp.weibo.create")
     public void create() {
 
+    }
+
+    @At("/save")
+    @POST
+    @Ok("redirect:/weibo/index")
+    public void save(@Param("::weibo.") Weibo weibo) {
+        dao().insert(weibo);
     }
 }
