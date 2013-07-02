@@ -18,7 +18,7 @@
       </tr>
       <% for (Weibo weibo : posts) { %>
       <tr>
-        <td><%= weibo.getId() %></td>
+        <td><a href='../weibo/<%= weibo.getId() %>/show'><%= weibo.getId() %></a></td>
         <td><%= weibo.getContent() %></td>
         <td><%= weibo.getCreatedAt() %></td>
       </tr>
