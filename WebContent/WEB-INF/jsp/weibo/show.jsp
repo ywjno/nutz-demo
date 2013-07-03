@@ -18,5 +18,19 @@
         <input type="hidden" name="weibo.id" id="weibo.id" value='<%= weibo.getId() %>' />
         <input type="submit" name="submit" value="delete this weibo" />
       </form>
+    <hr />
+    <h4>comment list</h4>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Content</th>
+      </tr>
+      <% for (Comment comment : weibo.getComments()) { %>
+      <tr>
+        <td><%= comment.getId() %></td>
+        <td><%= comment.getContent() %></td>
+      </tr>
+      <% } %>
+    </table>
   </body>
 </html>
