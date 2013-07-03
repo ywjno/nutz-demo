@@ -10,7 +10,7 @@ import org.nutz.mvc.ioc.provider.ComboIocProvider;
                                               "dao.js",
                                               "*org.nutz.ioc.loader.annotation.AnnotationIocLoader",
                                               "app"})
-@Modules({WeiboController.class})
+@Modules(scanPackage = true)
 public class ApplicationController {
 
     @At("/home/index")
