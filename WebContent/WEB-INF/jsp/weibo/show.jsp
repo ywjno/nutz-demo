@@ -32,5 +32,15 @@
       </tr>
       <% } %>
     </table>
+    <hr />
+    <h4>add comment</h4>
+    <form action="../../weibo/<%= weibo.getId() %>/comment/save" method="post">
+      <input type="hidden" name="comment.weiboId" id="comment.weiboId" value='<%= weibo.getId() %>' />
+      <p>
+        <label for="comment.content">content</label>
+        <input type="text" name="comment.content" id="comment.content" />
+      </p>
+      <input type="submit" name="submit" value="submit" />
+    </form>
   </body>
 </html>
