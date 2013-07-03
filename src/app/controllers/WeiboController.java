@@ -67,6 +67,7 @@ public class WeiboController extends IdEntityService<Weibo> {
     @POST
     @Ok(">>:/weibo/index")
     public void destroy(@Param("id") int id) {
-        dao().delete(fetch(id));
+        Weibo weibo = dao().fetchLinks(fetch(id), "comments");
+        dao().deleteWith(weibo, "comments");
     }
 }
