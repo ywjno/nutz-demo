@@ -43,8 +43,7 @@ public class WeiboController extends IdEntityService<Weibo> {
     @GET
     @Ok("jsp:jsp.weibo.show")
     public Weibo show(int id) {
-        Weibo weibo = fetch(id);
-        return weibo;
+        return dao().fetchLinks(fetch(id), "comments");
     }
 
     @At("/?/edit")
