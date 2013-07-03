@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Id;
+import org.nutz.dao.entity.annotation.Many;
 import org.nutz.dao.entity.annotation.Table;
 
 @Table(value = "weibos")
@@ -20,6 +21,9 @@ public class Weibo {
 
     @Column("updated_at")
     private Timestamp updatedAt;
+
+    @Many(target = Comment.class, field = "weiboId")
+    private Comment[] comments;
 
     public int getId() {
         return id;
@@ -51,5 +55,13 @@ public class Weibo {
 
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Comment[] getComments() {
+        return comments;
+    }
+
+    public void setComments(Comment[] comments) {
+        this.comments = comments;
     }
 }
