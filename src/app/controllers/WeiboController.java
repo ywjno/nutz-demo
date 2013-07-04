@@ -3,7 +3,8 @@ package app.controllers;
 import java.sql.Timestamp;
 import java.util.List;
 
-import org.nutz.dao.Cnd;
+import org.nutz.dao.Sqls;
+import org.nutz.dao.sql.Sql;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.lang.Times;
 import org.nutz.mvc.annotation.At;
@@ -15,7 +16,6 @@ import org.nutz.service.IdEntityService;
 import org.nutz.trans.Atom;
 import org.nutz.trans.Trans;
 
-import app.models.Comment;
 import app.models.Weibo;
 
 @IocBean(fields = "dao")
@@ -71,10 +71,16 @@ public class WeiboController extends IdEntityService<Weibo> {
     @POST
     @Ok(">>:/weibo/index")
     public void destroy(@Param("id") final int id) {
-        Trans.exec(new Atom(){
+        Trans.exec(new Atom() {
             public void run() {
-                delete(id);
-                dao().clear(Comment.class, Cnd.where("weibo_id", "=", id));
+                Sql deleteWeibo = Sqls.create("DELETE FROM weibos WHERE id=@id");
+                deleteWeibo.params().set("id", id);
+                dao().execute(deleteWeibo);
+
+                Sql deleteComments = Sqls.create("DELETE FROM $table WHERE weibo_id=@weibo_id");
+                deleteComments.vars().set("table", "comments");
+                deleteComments.params().set("weibo_id", id);
+                dao().execute(deleteComments);
             }
         });
     }
