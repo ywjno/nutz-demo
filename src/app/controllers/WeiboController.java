@@ -1,14 +1,10 @@
 package app.controllers;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
 import org.nutz.dao.Sqls;
 import org.nutz.dao.sql.Sql;
-import org.nutz.dao.sql.SqlCallback;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.lang.Times;
 import org.nutz.mvc.annotation.At;
@@ -53,18 +49,8 @@ public class WeiboController extends IdEntityService<Weibo> {
     public Weibo show(int id) {
         Sql sql = Sqls.create("SELECT weibos.* FROM weibos WHERE id=@id");
         sql.params().set("id", id);
-        sql.setCallback(new SqlCallback() {
-            public Object invoke(Connection conn, ResultSet rs, Sql sql) throws SQLException {
-                Weibo weibo = new Weibo();
-                while (rs.next()) {
-                    weibo.setId(rs.getInt("id"));
-                    weibo.setContent(rs.getString("content"));
-                    weibo.setCreatedAt(rs.getTimestamp("created_at"));
-                    weibo.setUpdatedAt(rs.getTimestamp("updated_at"));
-                }
-                return weibo;
-            }
-        });
+        sql.setCallback(Sqls.callback.entity());
+        sql.setEntity(dao().getEntity(Weibo.class));
         dao().execute(sql);
         Weibo weibo = sql.getObject(Weibo.class);
 
