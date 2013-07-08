@@ -1,6 +1,7 @@
 package app.controllers;
 
 import org.nutz.mvc.annotation.At;
+import org.nutz.mvc.annotation.Fail;
 import org.nutz.mvc.annotation.IocBy;
 import org.nutz.mvc.annotation.Modules;
 import org.nutz.mvc.annotation.Ok;
@@ -11,6 +12,7 @@ import org.nutz.mvc.ioc.provider.ComboIocProvider;
                                               "*org.nutz.ioc.loader.annotation.AnnotationIocLoader",
                                               "app"})
 @Modules(scanPackage = true)
+@Fail("jsp:503")
 public class ApplicationController {
 
     @At("/home/index")
