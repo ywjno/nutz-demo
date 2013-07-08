@@ -8,6 +8,7 @@ import org.nutz.dao.sql.Sql;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.lang.Times;
 import org.nutz.mvc.annotation.At;
+import org.nutz.mvc.annotation.Fail;
 import org.nutz.mvc.annotation.GET;
 import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.annotation.POST;
@@ -46,6 +47,7 @@ public class WeiboController extends IdEntityService<Weibo> {
     @At("/?/show")
     @GET
     @Ok("jsp:${obj != null ? 'jsp.weibo.show' : '404'}")
+    @Fail("jsp:503")
     public Weibo show(int id) {
         Sql sql = Sqls.fetchEntity("SELECT weibos.* FROM weibos WHERE id=@id")
                 .setEntity(dao().getEntity(Weibo.class));
