@@ -45,7 +45,7 @@ public class WeiboController extends IdEntityService<Weibo> {
 
     @At("/?/show")
     @GET
-    @Ok("jsp:jsp.weibo.show")
+    @Ok("jsp:${obj != null ? 'jsp.weibo.show' : '404'}")
     public Weibo show(int id) {
         Sql sql = Sqls.fetchEntity("SELECT weibos.* FROM weibos WHERE id=@id")
                 .setEntity(dao().getEntity(Weibo.class));
