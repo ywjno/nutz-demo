@@ -9,6 +9,8 @@
     <title><%= message.get("weibo.view.index.label.weibo_list") %></title>
   </head>
   <body>
+    <a href='../weibo/change/zh_CN'>中文</a>
+    <a href='../weibo/change/en_US'>English</a>
     <h3><%= message.get("weibo.view.index.label.weibo_list") %></h3>
     <% List<Weibo> posts = (List<Weibo>)request.getAttribute("obj"); %>
     <table>
