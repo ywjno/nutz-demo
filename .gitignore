@@ -4,7 +4,7 @@
 *.war
 *.ear
 
-.settings
 build/*
 *.db
-.settings
+
+*.DS_Store
