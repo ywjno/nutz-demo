@@ -3,6 +3,7 @@ package app.controllers;
 import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.Fail;
 import org.nutz.mvc.annotation.IocBy;
+import org.nutz.mvc.annotation.Localization;
 import org.nutz.mvc.annotation.Modules;
 import org.nutz.mvc.annotation.Ok;
 import org.nutz.mvc.ioc.provider.ComboIocProvider;
@@ -13,6 +14,7 @@ import org.nutz.mvc.ioc.provider.ComboIocProvider;
                                               "app"})
 @Modules(scanPackage = true)
 @Fail("jsp:503")
+@Localization("msg")
 public class ApplicationController {
 
     @At("/home/index")
