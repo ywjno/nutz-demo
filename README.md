@@ -22,7 +22,7 @@
 
 ### 0.准备工作
 
-1. 从 [每日构建地址] 下载 nutz 的最新的每日构建 jar 包
+1. 从 [Nutz de 下载列表] 页面下载 nutz 的最新的 jar 包（一般都叫 「nutz-last.jar」这个名字）
 1. 从 [Maven Repository] 下载「commons-dbcp-1.4」、「commons-pool-1.6」、「log4j-1.2.16」、「mysql-connector-java-5.1.25」这4个 jar 包
 1. 打开 eclipse，创建一个动态 web 工程，我们把该工程起名为「nutz-weibo」
 1. 把之前下载回来的 jar 包放入「/WebContent/WEB-INF/lib」文件夹中
@@ -1019,7 +1019,7 @@ public class ApplicationController {
 
 
 [nutz]: https://github.com/nutzam/nutz
-[每日构建地址]: https://oss.sonatype.org/content/repositories/snapshots/org/nutz/nutz/
+[Nutz de 下载列表]: http://downloads.nutzam.com/
 [Maven Repository]:http://mvnrepository.com/
 [nutz 手册]:http://nutzam.github.io/nutz/
 [如何配置 web.xml]:http://nutzam.github.io/nutz/mvc/web_xml.html
